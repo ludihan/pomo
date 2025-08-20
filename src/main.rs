@@ -11,10 +11,6 @@ const STEP: Duration = Duration::from_secs(60);
 
 fn main() -> ExitCode {
     let pomo = Pomo::parse();
-    if pomo.cycles < 2 {
-        eprintln!("can't have less than 2 cycles");
-        return ExitCode::FAILURE;
-    }
 
     loop {
         pomo.clone().start();
