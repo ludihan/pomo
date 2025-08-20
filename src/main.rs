@@ -52,7 +52,7 @@ impl Pomo {
         let short_break = self.short_break;
         let long_break = self.long_break;
         let use_cycles = self.cycles != 0 && self.cycles != 1;
-        while self.cycles > 0 {
+        while self.cycles > 0 || !use_cycles {
             self.work_time = work_time;
             self.short_break = short_break;
             self.long_break = long_break;
