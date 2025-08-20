@@ -42,7 +42,6 @@ impl Pomo {
     }
 
     fn start(&mut self) {
-        send_notif("start working");
         self.print();
         self.work();
     }
@@ -53,6 +52,7 @@ impl Pomo {
         let long_break = self.long_break;
         let use_cycles = self.cycles != 0 && self.cycles != 1;
         while self.cycles > 0 || !use_cycles {
+            send_notif("start working");
             self.work_time = work_time;
             self.short_break = short_break;
             self.long_break = long_break;
@@ -71,7 +71,6 @@ impl Pomo {
                     thread::sleep(STEP);
                     self.long_break -= 1;
                 }
-                send_notif("go back to work")
             } else {
                 send_notif("take a short break");
                 while self.short_break > 0 {
@@ -79,7 +78,6 @@ impl Pomo {
                     thread::sleep(STEP);
                     self.short_break -= 1;
                 }
-                send_notif("go back to work")
             }
         }
     }
